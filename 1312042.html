@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="MyCV">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,11 +12,20 @@
         <!-- Bootstrap Core CSS -->
         <link href="./css/bootstrap.min.css" rel="stylesheet">
 
+        <!-- Bootstrap Theme CSS -->
+        <link href="./css/bootstrap-theme.min.css" rel="stylesheet">
+
         <!-- jQuery -->
         <script src="./js/jquery-2.2.3.min.js"></script>
  
         <!-- Bootstrap Core JavaScript -->
         <script src="./js/bootstrap.min.js"></script>
+
+        <!-- AngularJS -->
+        <script src="./js/angular.min.js"></script>
+
+        <!-- Default JavaScript -->
+        <script src="./js/default.js"></script>
     </head>
     <body>
         <!-- Navigation -->
@@ -74,7 +83,6 @@
                             </ul>                          
                         </li>
                     </ul>
- 
                     <div class="navbar-right">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
@@ -99,7 +107,7 @@
         <!-- Navigation -->
     
         <!-- Page Content -->
-        <div class="container">
+        <div class="container" ng-controller="ProfileController">
             <div class="row">
                 <div class="panel panel-success">
                     <div class="col-md-10" style="padding-left: 0">
@@ -108,35 +116,119 @@
                                 <img src="./images/1312042.jpg" alt="Avatar">
                             </a>
                         </div>                      
-                        <div class="col-md-6"><h3>Nguyen Quoc Buu</h3>
-                        <h4>Student at University of Science Ho Chi Minh City</h4>
+                        <div class="col-md-6" ng-controller="ProfileController">
+                            <h3>
+                                <span ng-bind="firstname"></span>
+                                <span ng-bind="lastname"></span>
+                                <span class="dropdown">
+                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                    <div class="dropdown-menu">
+                                        <form>
+                                            <div class="form-group">
+                                                <label>FirstName</label>
+                                                <input type="FirstName" class="form-control" placeholder="FirstName" ng-model="firstname"></input>              
+                                            </div>
+                                            <div class="form-group">
+                                                <label>LastName</label>
+                                                <input type="LastName" class="form-control" placeholder="LastName" ng-model="lastname"></input>
+                                            </div>                
+                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>         
+                                        </form>
+                                    </div>
+                                </span>                          
+                            </h3>
+                            <h4>
+                                <span ng-bind="headline"></span>
+                                <span class="dropdown">
+                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                    <div class="dropdown-menu">
+                                        <form>
+                                            <div class="form-group">
+                                                <label>Your professional headline</label>
+                                                <input type="Headline" class="form-control" placeholder="Headline" ng-model="headline"></input>              
+                                            </div>               
+                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button> 
+                                        </form>
+                                    </div>
+                                </span> 
+                            </h4>
                         <div>
-                            <dl>
-                                <dt>
-                                    <dd class="pull-left">
-                                    VietNam |
-                                    </dd>
-                                </dt>
-                                <dt>
-                                    <dd>
-                                    Information Technology and Services
-                                    </dd>
-                                </dt>
-                            </dl>
+                            <ul class="list-inline">
+                                <li ng-bind="country"></li>
+                                <li ng-bind="industry"></li>
+                                <span class="dropdown">
+                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                    <div class="dropdown-menu">
+                                        <form>
+                                            <div class="form-group">
+                                                <label>Country</label>
+                                                <input type="Country" class="form-control" placeholder="Country" ng-model="country"></input>              
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Industry</label>
+                                                <input type="Industry" class="form-control" placeholder="Industry" ng-model="industry"></input>
+                                            </div>                
+                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button> 
+                                        </form>
+                                    </div>
+                                </span>
+                            </ul>
                         </div>
                         <table class="table">
                             <tbody>
-                                <tr>
+                                <tr>          
                                     <td>Current</td>
-                                    <td>University of Science Ho Chi Minh City</td>                                   
+                                    <td>
+                                        <span ng-bind="current"></span>
+                                        <span class="dropdown">
+                                            <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                            <div class="dropdown-menu">
+                                                <form>                                               
+                                                    <div class="form-group">
+                                                        <label>Current</label>
+                                                        <input type="Current" class="form-control" placeholder="Current" ng-model="current"></input>
+                                                    </div>                
+                                                    <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button> 
+                                                </form>
+                                            </div>
+                                        </span>
+                                    </td>     
                                 </tr>
-                                <tr>
+                                <tr class="dropdown">
                                     <td>Previous</td>
-                                    <td>Duc Hoa Senior HighSchool</td>        
+                                    <td>
+                                        <span ng-bind="previous"></span>
+                                        <span class="dropdown">
+                                            <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                            <div class="dropdown-menu">
+                                                <form>                                               
+                                                    <div class="form-group">
+                                                        <label>Previous</label>
+                                                        <input type="Previous" class="form-control" placeholder="Previous" ng-model="previous"></input>
+                                                    </div>                
+                                                    <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button> 
+                                                </form>
+                                            </div>
+                                        </span>
+                                    </td>        
                                 </tr>
                                 <tr>
                                     <td>Education</td>
-                                    <td>University of Science Ho Chi Minh City</td>     
+                                    <td>
+                                        <span ng-bind="education"></span>
+                                        <span class="dropdown">
+                                            <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                            <div class="dropdown-menu">
+                                                <form>                                               
+                                                    <div class="form-group">
+                                                        <label>Education</label>
+                                                        <input type="Education" class="form-control" placeholder="Education" ng-model="education"></input>
+                                                    </div>                
+                                                    <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button> 
+                                                </form>
+                                            </div>
+                                        </span>
+                                    </td>     
                                 </tr>
                             </tbody>
                         </table>
@@ -152,8 +244,7 @@
                               <li class="divider"></li>
                               <li><a href="#">Remove connection</a></li>
                             </ul>
-                        </div></div>
-                                               
+                        </div></div>                            
                     </div>    
                     <div class="panel-body"></div>
                     <div class="panel-footer">
@@ -166,17 +257,26 @@
                 </div> 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class="panel-title">Background</div>
+                        <h3 class="panel-title">Background</h3>
                     </div>
                     <div class="panel-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <h4>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
                                     <span class="glyphicon glyphicon-list-alt"></span>
                                     <span>Summary</span>
                                 </h4>
+                            </div>
+                            <div class="panel-body">
                                 <ul class="list-unstyled">
-                                    <li>Third-year student at University of Science Ho Chi Minh City.</li>
+                                    <li>Third-year student at University of Science Ho Chi Minh City.
+                                        <span class="dropdown">
+                                        <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                        <div class="dropdown-menu">
+                                            <textarea cols="10" class="col-md-offset-0 col-md-8"></textarea>
+                                        </div>
+                                    </span>
+                                    </li>
                                     <li>Specialized Information System.</li>
                                     <li>Good teamwork and reporting skills.</li>
                                     <li>Have knowlegde about:
@@ -187,101 +287,570 @@
                                             <li>Web: HTML, CSS, Javascript.</li>
                                         </ul>
                                     </li>
-                                    <li>Love Manga and Anime.</li>
+                                    <li>Love Manga and Anime.</li>                                   
                                 </ul>
-                            </li>
-                            <li class="list-group-item">
-                                <h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary" ng-controller="ProfileController">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
                                     <span class="glyphicon glyphicon-user"></span>
                                     <span>Experience</span>
                                 </h4>
+                            </div>
+                            <div class="panel-body">
                                 <ul class="list-unstyled">
                                     <li>
-                                        <h4><strong>Alumnus</strong></h4>
+                                        <h4>
+                                            <strong ng-bind="position1"></strong>                                  
+                                            <span class="dropdown">
+                                                <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                <div class="dropdown-menu">
+                                                    <form>                                          
+                                                        <div class="form-group">
+                                                            <label>Position</label>
+                                                            <input type="Position1" class="form-control" placeholder="Position" ng-model="position1"></input>
+                                                        </div>                
+                                                        <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                    </form>
+                                                </div>
+                                            </span>
+                                        </h4>
                                         <ul class="list-unstyled">
-                                            <li>University of Science Ho Chi Minh City</li>
-                                            <li>September 2013 – Present (2 years 9 months) | Ho Chi Minh City</li>
-                                            <li>Student of Information Technology Faculty</li>
+                                            <li>
+                                                <span ng-bind="companyname1"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Company Name</label>
+                                                                <input type="Companyname1" class="form-control" placeholder="Companyname" ng-model="companyname1"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span ng-bind="location1"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Location</label>
+                                                                <input type="Location1" class="form-control" placeholder="Location" ng-model="location1"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span ng-bind="description1"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <input type="Description1" class="form-control" placeholder="Description" ng-model="description1"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>
                                         </ul>    
                                     </li>
                                     <li>
-                                        <h4><strong>Student</strong></h4> 
+                                        <h4>
+                                            <strong ng-bind="position2"></strong>                           
+                                            <span class="dropdown">
+                                                <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                <div class="dropdown-menu">
+                                                    <form>                                          
+                                                        <div class="form-group">
+                                                            <label>Position</label>
+                                                            <input type="Position2" class="form-control" placeholder="Position" ng-model="position2"></input>
+                                                        </div>                
+                                                        <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                    </form>
+                                                </div>
+                                            </span>
+                                        </h4>
                                         <ul class="list-unstyled">
-                                            <li>Duc Hoa Senior HighSchool</li>
-                                            <li>September 2009 – June 2013 (3 years 10 months) | Long An, Viet Nam</li>
-                                        </ul>
+                                            <li>
+                                                <span ng-bind="companyname2"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Company Name</label>
+                                                                <input type="Companyname2" class="form-control" placeholder="Companyname" ng-model="companyname2"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span ng-bind="location2"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Location</label>
+                                                                <input type="Location2" class="form-control" placeholder="Location" ng-model="location2"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span ng-bind="description2"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <input type="Description2" class="form-control" placeholder="Description" ng-model="description2"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                        </ul> 
                                     </li>
                                 </ul>
-                            </li>
-                            <li class="list-group-item">
-                                <h4>
+                            </div>
+                            <div class="panel-footer text-center"><a href="">Add position</a></div>
+                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
                                     <span class="glyphicon glyphicon-briefcase"></span>
                                     <span>Skills</span>
-                                </h4> 
+                                </h4>
+                            </div>
+                            <div class="panel-body">
                                 <ul class="list-unstyled">
-                                    <li>Data Mining</li>
-                                    <li>Microsoft SQL Server</li>
-                                    <li>Oracle</li>
-                                    <li>Databases</li>
-                                    <li>DAC, RBAC</li>
-                                    <li>C, C++, C#, Java</li>
-                                    <li>HTML, CSS, JavaScript</li>
-                                    <li>Report Writing</li>
-                                    <li>Teamwork</li>
-                                </ul>       
-                            </li>
-                            <li class="list-group-item">
-                                <h4>
-                                    <span class="glyphicon glyphicon-modal-window"></span>
+                                    <li>
+                                        <span ng-bind="skill1"></span>
+                                        <span class="dropdown">
+                                            <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                            <div class="dropdown-menu">
+                                                <form>                                               
+                                                    <div class="form-group">
+                                                        <label>Skill</label>
+                                                        <input type="Skill1" class="form-control" placeholder="Skill" ng-model="skill1"></input>
+                                                    </div>                
+                                                    <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button> 
+                                                </form>
+                                            </div>
+                                        </span>
+                                    </li>
+                                    <li>
+                                    <span ng-bind="skill2"></span>
+                                        <span class="dropdown">
+                                            <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                            <div class="dropdown-menu">
+                                                <form>                                               
+                                                    <div class="form-group">
+                                                        <label>Skill</label>
+                                                        <input type="Skill2" class="form-control" placeholder="Skill" ng-model="skill2"></input>
+                                                    </div>                
+                                                    <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button> 
+                                                </form>
+                                            </div>
+                                        </span>
+                                    </li>
+                                    <li>
+                                    <span ng-bind="skill3"></span>
+                                        <span class="dropdown">
+                                            <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                            <div class="dropdown-menu">
+                                                <form>                                               
+                                                    <div class="form-group">
+                                                        <label>Skill</label>
+                                                        <input type="Skill3" class="form-control" placeholder="Skill" ng-model="skill3"></input>
+                                                    </div>                
+                                                    <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button> 
+                                                </form>
+                                            </div>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span ng-bind="skill4"></span>
+                                        <span class="dropdown">
+                                            <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                            <div class="dropdown-menu">
+                                                <form>                                               
+                                                    <div class="form-group">
+                                                        <label>Skill</label>
+                                                        <input type="Skill4" class="form-control" placeholder="Skill" ng-model="skill4"></input>
+                                                    </div>                
+                                                    <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button> 
+                                                </form>
+                                            </div>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span ng-bind="skill5"></span>
+                                        <span class="dropdown">
+                                            <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                            <div class="dropdown-menu">
+                                                <form>                                               
+                                                    <div class="form-group">
+                                                        <label>Skill</label>
+                                                        <input type="Skill5" class="form-control" placeholder="Skill" ng-model="skill5"></input>
+                                                    </div>                
+                                                    <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button> 
+                                                </form>
+                                            </div>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span ng-bind="skill6"></span>
+                                        <span class="dropdown">
+                                            <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                            <div class="dropdown-menu">
+                                                <form>                                               
+                                                    <div class="form-group">
+                                                        <label>Skill</label>
+                                                        <input type="Skill6" class="form-control" placeholder="Skill" ng-model="skill6"></input>
+                                                    </div>                
+                                                    <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button> 
+                                                </form>
+                                            </div>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span ng-bind="skill7"></span>
+                                        <span class="dropdown">
+                                            <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                            <div class="dropdown-menu">
+                                                <form>                                               
+                                                    <div class="form-group">
+                                                        <label>Skill</label>
+                                                        <input type="Skill7" class="form-control" placeholder="Skill" ng-model="skill7"></input>
+                                                    </div>                
+                                                    <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button> 
+                                                </form>
+                                            </div>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span ng-bind="skill8"></span>
+                                        <span class="dropdown">
+                                            <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                            <div class="dropdown-menu">
+                                                <form>                                               
+                                                    <div class="form-group">
+                                                        <label>Skill</label>
+                                                        <input type="Skill8" class="form-control" placeholder="Skill" ng-model="skill8"></input>
+                                                    </div>                
+                                                    <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button> 
+                                                </form>
+                                            </div>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span ng-bind="skill9"></span>
+                                        <span class="dropdown">
+                                            <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                            <div class="dropdown-menu">
+                                                <form>                                               
+                                                    <div class="form-group">
+                                                        <label>Skill</label>
+                                                        <input type="Skill9" class="form-control" placeholder="Skill" ng-model="skill9"></input>
+                                                    </div>                
+                                                    <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button> 
+                                                </form>
+                                            </div>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel-footer text-center"><a href="">Add skill</a></div>
+                        </div>
+                        <div class="panel panel-primary" ng-controller="ProfileController">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <span class="glyphicon glyphicon-user"></span>
                                     <span>Project</span>
-                                </h4> 
+                                </h4>
+                            </div>
+                            <div class="panel-body">
                                 <ul class="list-unstyled">
                                     <li>
-                                        <h4><strong>Chess</strong></h4>
+                                        <h4>
+                                            <strong ng-bind="project1"></strong>                                  
+                                            <span class="dropdown">
+                                                <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                <div class="dropdown-menu">
+                                                    <form>                                          
+                                                        <div class="form-group">
+                                                            <label>Project</label>
+                                                            <input type="Project1" class="form-control" placeholder="Project" ng-model="project1"></input>
+                                                        </div>                
+                                                        <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                    </form>
+                                                </div>
+                                            </span>
+                                        </h4>
                                         <ul class="list-unstyled">
-                                            <li>March 2015</li>
-                                            <li>C++ Programming</li>
-                                        </ul>
+                                            <li>
+                                                <span ng-bind="date1"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Date</label>
+                                                                <input type="Date1" class="form-control" placeholder="Date" ng-model="date1"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span ng-bind="projectdescription1"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <input type="ProjectDescription1" class="form-control" placeholder="Description" ng-model="projectdescription1"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                        </ul>    
                                     </li>
                                     <li>
-                                        <h4><strong>Mobile Phone Store System Management</strong></h4>
+                                        <h4>
+                                            <strong ng-bind="project2"></strong>                                  
+                                            <span class="dropdown">
+                                                <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                <div class="dropdown-menu">
+                                                    <form>                                          
+                                                        <div class="form-group">
+                                                            <label>Project</label>
+                                                            <input type="Project2" class="form-control" placeholder="Project" ng-model="project2"></input>
+                                                        </div>                
+                                                        <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                    </form>
+                                                </div>
+                                            </span>
+                                        </h4>
                                         <ul class="list-unstyled">
-                                            <li>November 2015</li>
-                                            <li>Information Systems Analysis and Design</li>
-                                        </ul>
+                                            <li>
+                                                <span ng-bind="date2"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Date</label>
+                                                                <input type="Date2" class="form-control" placeholder="Date" ng-model="date2"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span ng-bind="projectdescription2"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <input type="ProjectDescription2" class="form-control" placeholder="Description" ng-model="projectdescription2"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                        </ul> 
                                     </li>
                                     <li>
-                                        <h4><strong>Hibernate</strong></h4>    
+                                        <h4>
+                                            <strong ng-bind="project3"></strong>                                  
+                                            <span class="dropdown">
+                                                <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                <div class="dropdown-menu">
+                                                    <form>                                          
+                                                        <div class="form-group">
+                                                            <label>Project</label>
+                                                            <input type="Project3" class="form-control" placeholder="Project" ng-model="project3"></input>
+                                                        </div>                
+                                                        <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                    </form>
+                                                </div>
+                                            </span>
+                                        </h4>
                                         <ul class="list-unstyled">
-                                            <li>April 2016</li>
-                                            <li>Java Programming</li>
-                                        </ul>
+                                            <li>
+                                                <span ng-bind="date3"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Date</label>
+                                                                <input type="Date3" class="form-control" placeholder="Date" ng-model="date3"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span ng-bind="projectdescription3"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <input type="ProjectDescription3" class="form-control" placeholder="Description" ng-model="projectdescription3"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                        </ul> 
                                     </li>
-                                </ul>                    
-                            </li>
-                            <li class="list-group-item">
-                                <h4>
-                                    <span class="glyphicon glyphicon-education"></span>
+                                </ul>
+                            </div>
+                            <div class="panel-footer text-center"><a href="">Add project</a></div>
+                        </div>
+                        <div class="panel panel-primary" ng-controller="ProfileController">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <span class="glyphicon glyphicon-user"></span>
                                     <span>Education</span>
                                 </h4>
+                            </div>
+                            <div class="panel-body">
                                 <ul class="list-unstyled">
                                     <li>
-                                        <h4><strong>University of Science Ho Chi Minh City</strong></h4>
+                                        <h4>
+                                            <strong ng-bind="school1"></strong>                                  
+                                            <span class="dropdown">
+                                                <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                <div class="dropdown-menu">
+                                                    <form>                                          
+                                                        <div class="form-group">
+                                                            <label>School</label>
+                                                            <input type="School1" class="form-control" placeholder="School" ng-model="school1"></input>
+                                                        </div>                
+                                                        <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                    </form>
+                                                </div>
+                                            </span>
+                                        </h4>
                                         <ul class="list-unstyled">
-                                            <li>Information Technology</li>
-                                            <li>2013 – 2017</li>
-                                        </ul>
+                                            <li>
+                                                <span ng-bind="fieldofstudy1"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Field of Study</label>
+                                                                <input type="FieldOfStudy1" class="form-control" placeholder="Field of Study" ng-model="fieldofstudy1"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span ng-bind="datesattended1"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Dates Attended</label>
+                                                                <input type="DatesAttended1" class="form-control" placeholder="Dates Attended" ng-model="datesattended1"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>                                          
+                                        </ul>    
                                     </li>
                                     <li>
-                                        <h4><strong>Duc Hoa Senior HighSchool</strong></h4>    
+                                        <h4>
+                                            <strong ng-bind="school2"></strong>                                  
+                                            <span class="dropdown">
+                                                <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                <div class="dropdown-menu">
+                                                    <form>                                          
+                                                        <div class="form-group">
+                                                            <label>School</label>
+                                                            <input type="School2" class="form-control" placeholder="School" ng-model="school2"></input>
+                                                        </div>                
+                                                        <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                    </form>
+                                                </div>
+                                            </span>
+                                        </h4>
                                         <ul class="list-unstyled">
-                                            <li>Grade 10, 11, 12</li>
-                                            <li>2009 – 2013</li>
-                                        </ul>
+                                            <li>
+                                                <span ng-bind="fieldofstudy2"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Field of Study</label>
+                                                                <input type="FieldOfStudy2" class="form-control" placeholder="Field of Study" ng-model="fieldofstudy2"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span ng-bind="datesattended2"></span>
+                                                <span class="dropdown">
+                                                    <a class="glyphicon glyphicon-pencil" data-toggle="dropdown" href=""></a>
+                                                    <div class="dropdown-menu">
+                                                        <form>                                       
+                                                            <div class="form-group">
+                                                                <label>Dates Attended</label>
+                                                                <input type="DatesAttended2" class="form-control" placeholder="Dates Attended" ng-model="datesattended2"></input>
+                                                            </div>                
+                                                            <button class="btn btn-primary col-md-offset-3 col-md-6" type="submit">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </span>
+                                            </li>                                          
+                                        </ul>    
                                     </li>
-                                </ul>                          
-                            </li>
-                        </ul>
+                                </ul>
+                            </div>
+                            <div class="panel-footer text-center"><a href="">Add education</a></div>
+                        </div>
                     </div>
                 </div>             
             </div>
